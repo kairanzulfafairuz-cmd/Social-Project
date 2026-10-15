@@ -124,6 +124,70 @@
     </section>
 
    
+<button id="noteBtn" class="note-btn" aria-label="Buka catatan">📝</button>
+
+<div id="notePanel" class="note-panel">
+    <div class="note-head">
+        <strong>Catatan Pesanan</strong>
+        <button id="noteClose" aria-label="Tutup">✕</button>
+    </div>
+    <textarea id="noteText" placeholder="kalo kebanyakan pilih menu nya, note dulu aja disini biar ga lupa"></textarea>
+</div>
+
+<script>
+(function () {
+    const btn = document.getElementById('noteBtn');
+    const panel = document.getElementById('notePanel');
+    const text = document.getElementById('noteText');
+    const status = document.getElementById('noteStatus');
+    const KEY = 'catatan-pesanan';
+    
+
+    // Tinggi kotak menyesuaikan isi
+    function autoResize() {
+        text.style.height = 'auto';
+        text.style.height = text.scrollHeight + 'px';
+    }
+
+    // Ambil catatan tersimpan
+    try { text.value = localStorage.getItem(KEY) || ''; } catch (e) {}
+    autoResize();
+
+    // Buka / tutup panel
+    btn.addEventListener('click', () => {
+        panel.classList.toggle('show');
+        if (panel.classList.contains('show')) {
+            autoResize();
+            text.focus();
+        }
+    });
+
+    document.getElementById('noteClose').addEventListener('click', () => {
+        panel.classList.remove('show');
+    });
+
+    // Simpan otomatis saat mengetik
+    let timer;
+    text.addEventListener('input', () => {
+        autoResize();
+        status.textContent = 'Menyimpan...';
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            try { localStorage.setItem(KEY, text.value); } catch (e) {}
+            status.textContent = 'Tersimpan otomatis';
+        }, 300);
+    });
+
+    // Hapus semua
+  document.getElementById('noteClose').addEventListener('click', () => {
+    text.value = '';
+    autoResize();
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    status.textContent = 'Tersimpan otomatis';
+    panel.classList.remove('show');
+});
+})();
+</script>
 
 </body>
 </html>

@@ -1,5 +1,5 @@
 :root {
-    --warna: #2f9e5b;        /* warna utama (ganti ke #e58a98 untuk pink) */
+    --warna: #8DB255;        
     --warna-tua: #0c5718;
     --kertas: #ffffff;
     --teks: #2b2b2b;
@@ -12,14 +12,14 @@ body {
     font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
     color: var(--teks);
     min-height: 100vh;
-    /* blok warna di atas, putih di bawah, dipotong miring */
+    
     background:
         linear-gradient(165deg, var(--warna) 0 340px, transparent 341px),
         #f4f1ec;
     background-repeat: no-repeat;
 }
 
-/* ---------- Header ---------- */
+
 header {
     text-align: center;
     color: #fff;
@@ -33,7 +33,7 @@ header h1 {
     text-shadow: 0 3px 0 rgba(0, 0, 0, .15);
 }
 
-/* ---------- Tab kategori ---------- */
+
 .kategori {
     display: flex;
     justify-content: center;
@@ -69,7 +69,7 @@ header h1 {
     color: #fff;
 }
 
-/* ---------- Section ---------- */
+
 section {
     max-width: 1000px;
     margin: 26px auto;
@@ -87,14 +87,14 @@ section {
     margin-bottom: 16px;
 }
 
-/* ---------- Grid ---------- */
+
 .menu-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 16px;
 }
 
-/* ---------- Kartu putih seperti referensi ---------- */
+
 .menu-card {
     background: var(--kertas);
     border-radius: 14px;
@@ -144,7 +144,7 @@ section {
     font-size: 1rem;
 }
 
-/* ---------- HP ---------- */
+
 @media (max-width: 600px) {
     body {
         background:
