@@ -204,7 +204,7 @@
     try { text.value = localStorage.getItem(KEY) || ''; } catch (e) {}
     autoResize();
 
-    // Buka / tutup panel
+    // Buka tutup panel
     btn.addEventListener('click', () => {
         panel.classList.toggle('show');
         if (panel.classList.contains('show')) {
